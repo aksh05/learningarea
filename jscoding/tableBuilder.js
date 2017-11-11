@@ -77,7 +77,7 @@
         var cols = rowHeights(rows);
 
         function drawLines(){
-            rows.
+            
         }
     }
 })();
