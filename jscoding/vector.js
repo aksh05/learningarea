@@ -2,21 +2,25 @@
 function Vector(x,y){
     this.x = x;
     this.y = y;
-    this.plus = function(vector){
-        if(vector instanceof Vector){
-            return new Vector(this.x+vector.x,this.y+vector.y);
-        }else{
-            console.log("Please pass a vector object");
-        }
+    
+}
+
+//adding to prototype
+Vector.prototype.plus = function(vector){
+    if(vector instanceof Vector){
+        return new Vector(this.x+vector.x,this.y+vector.y);
+    }else{
+        console.log("Please pass a vector object");
     }
-    this.minus = function(){
-        if(vector instanceof Vector){
-            return new Vector(this.x-vector.x,this.y-vector.y);
-        }else{
-            console.log("Please pass a vector object");
-        }
-        
+}
+
+Vector.prototype.minus = function(vector){
+    if(vector instanceof Vector){
+        return new Vector(this.x-vector.x,this.y-vector.y);
+    }else{
+        console.log("Please pass a vector object");
     }
+    
 }
 
 Object.defineProperty(Vector.prototype,"length",{
