@@ -1,5 +1,5 @@
 //building the world of grids
-
+"use strict";
 //can't  go without vectors in the real world
 function Vector(x,y){
     this.x = x;
@@ -26,3 +26,32 @@ Grid.prototype.set = function(content){
 Grid.prototype.isInside = function(){
     return (this.x<this.width&& this.x>=0 && this.y>=0 && this.y<this.height);
 }
+
+//critters to roam around the world
+function Critter(){
+    this.direction = "n";
+    console.log(this);
+
+    [1,2,3,3].map((v)=>{
+        console.log(this);
+    });
+ this.foo = "89"
+    var a = {
+        foo:"21",
+        abc:()=>{
+            console.log(this.foo);
+        }
+    }
+    //a.abc();
+    a.abc.bind({foo:12})();
+}
+var critter = new Critter();
+
+this.data = 23;
+var test =()=>{
+    console.log(this.data);
+}
+test.bind({data:34});
+test();
+
+

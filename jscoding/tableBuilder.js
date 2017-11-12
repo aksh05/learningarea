@@ -2,7 +2,7 @@
 
 (()=>{
 
-   /************Table Elements Definitions****************/ 
+   /=========Table Elements Definitions==========/ 
     //cell constructor for each cell in a row
     function Cell(height,width,content){
         this.height = height || 0;
