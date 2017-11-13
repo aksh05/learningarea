@@ -1,0 +1,65 @@
+<html>
+
+    <head>
+        <style>
+
+            body{
+                background-color: black;
+            }
+            #hearttricks{
+                height: 400px;
+                top: 218px;
+                left: 260px;
+                position: relative;
+            }
+            #heart {
+                position: relative;
+                width: 100px;
+                height: 90px;
+                float: left;
+                animation: pulse 1s ease infinite;
+            }
+            #heart:before,
+                #heart:after {
+                position: absolute;
+                content: "";
+                left: 50px;
+                top: 0;
+                width: 50px;
+                height: 80px;
+                background: red;
+                border-radius: 50px 50px 0 0;
+                transform: rotate(-45deg);
+                transform-origin: 0 100%;
+            }
+            #heart:after {
+                left: 0;
+                transform: rotate(45deg);
+                transform-origin :100% 100%;
+            }
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.2); }
+                100% { transform: scale(1); }
+            }
+           h1{
+               float: left;
+               font-family: georgia, 'Times New Roman', Times, serif;
+               margin: 22px 71px;
+                color: white
+           }
+        </style>
+    </head>
+    <body>
+
+        <div id="hearttricks">
+            <h1>I</h1>
+            <div id="heart">
+
+            </div>
+            <h1>You</h1>
+
+        </div>
+        
+    </body>
+</html>

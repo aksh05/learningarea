@@ -118,9 +118,42 @@ var utils = require("./utils").utils();
     linkedList.swapKthNode(2);
     linkedList.display();
 
-    /================Binary=================/
+    /================Binaries=================/
     var countBitsToBeFlipped = function(a,b){
-        console.log(a^b);
+        var xor = a^b;
+        console.log(xor);
+        var count = 0;
+        while(xor){
+            
+            count = count + (xor & 1);
+            xor = xor>>1;
+        }
+        console.log(count);
     }
-    countBitsToBeFlipped(1,2);
+    countBitsToBeFlipped(10,20);
+
+
+    /================Search arrays====================/
+    var searchSortedMatrix = function(num){
+        if(!num)
+        return;
+        var a = [ [10, 20, 30, 40],
+        [15, 25, 35, 45],
+        [27, 29, 37, 48],
+        [32, 33, 39, 50]];
+        var i=0; var j=a[0].length-1;
+        console.log(i+""+j)
+        while(i<a.length && j>=0){
+            if(a[i][j]==num){
+                console.log("Match found at: "+i+","+j);
+                return;
+            }else if(a[i][j]>num){
+                j--;
+            }else {
+                i++;
+            }
+        }
+        console.log("Not Found");
+    }
+    searchSortedMatrix(39);
 })();

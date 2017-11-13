@@ -42,9 +42,11 @@ function Critter(){
             console.log(this.foo);
         }
     }
-    //a.abc();
+    a.abc();
     a.abc.bind({foo:12})();
 }
+
+//getting deviated  from the world builder and testing small hacks
 var critter = new Critter();
 
 this.data = 23;
@@ -54,4 +56,6 @@ var test =()=>{
 test.bind({data:34});
 test();
 
+var myFunction = new Function("a","b","return Math.random(b-a)");
+console.log(myFunction instanceof Function)
 
