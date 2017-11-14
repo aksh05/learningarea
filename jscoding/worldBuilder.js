@@ -57,5 +57,45 @@ test.bind({data:34});
 test();
 
 var myFunction = new Function("a","b","return Math.random(b-a)");
-console.log(myFunction instanceof Function)
+console.log(myFunction instanceof Function);
+
+
+
+
+//multiplication error example
+function MultiplicationError(message){
+    this.message = message;
+    this.stack = (new Error).stack;
+}
+MultiplicationError.prototype = Object.create(Error.prototype);
+
+function primitiveMultiply(a,b){
+    if(Math.random()>0.5){
+        throw new MultiplicationError("Multiplication Faliure");
+    }
+    else
+        return a*b;
+
+}
+
+function MultiplyWrapper(a,b){
+    for(;;){
+        try{
+            console.log(primitiveMultiply(a,b))
+            break;
+        }catch(e){
+            if(e instanceof MultiplicationError){
+                console.log("Multiply Error");
+            }else{
+                throw e;
+            }
+        }
+    }
+    
+}
+MultiplyWrapper(2,3);
+
+
+    
+
 
