@@ -1,0 +1,37 @@
+.right-trianngle {
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid purple;
+}
+.flexible {
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+.flexible-div1 {
+  flex-direction: row;
+}
+.flexible-div2 {
+  flex-direction: row-reverse;
+}
+.flexible-div3 {
+  flex-direction: column;
+}
+.flexible-div4 {
+  flex-direction: column-reverse;
+}
+.box {
+  width: 100px;
+  height: 100px;
+}
+.box:nth-child(2n) {
+  content: "I am even";
+  background-color: blue;
+}
+.box:nth-child(2n+1) {
+  content: "I am odd";
+  background-color: purple;
+}

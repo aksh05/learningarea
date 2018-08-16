@@ -1,0 +1,24 @@
+<html !doctype>
+
+
+<body>
+
+    <input type="text" id="search" />
+
+
+    <script>
+        var tref = null;
+        document.getElementById("search").addEventListener("keypress", event => {
+            //console.log(tref)
+            if (tref) {
+                clearTimeout(tref);
+            }
+            tref = setTimeout(function () {
+                console.log(event.target.value);
+            }, 1000);
+        })
+
+    </script>
+</body>
+
+</html>

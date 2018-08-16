@@ -1,0 +1,86 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+ </head>
+
+ <style>
+ 
+ .grid{
+     width: 270px;
+ }
+ .grid ul{
+    margin: 0;
+ }
+ .grid ul li{
+     display: inline-block;
+     width: 30px;
+     height: 30px;
+     border: 1px solid black;
+     transition: background 0.7s ease-in;
+ }
+ </style>
+
+ <script>
+ 
+ window.onload = function(){
+
+    let block;
+    setTimeout(function(){
+        document.getElementById(block+"").style.background = "";
+        clearInterval(gameInterval);
+    },1000*60*2);
+    
+    let gameInterval = setInterval(function(){
+        let tempBlock = block;
+        if(block){
+            document.getElementById(block+"").style.background = "";
+        }
+         block= Math.floor(Math.random()*9) +1;
+         if(tempBlock === block){
+             block = (block+1)%9
+         }
+        //  if(block===0){
+        //      block = 1;
+        //  }
+        console.log(block);
+        document.getElementById(block+"").style.background = "blue";
+    },1000);
+ }
+
+ function mark(block){
+    if(document.getElementById(block+"").style.background == "blue"){
+        let score = document.getElementById("score");
+        score.innerText = parseInt(score.innerText) + 1 + ""; 
+        
+    }
+ }
+ </script>
+ <body>
+     
+    <div class="grid">
+        <ul>
+            <li id="1" onclick="mark(1)"></li>
+            <li id="2" onclick="mark(2)"></li>
+            <li id="3" onclick="mark(3)"></li>
+        </ul>
+        <ul>
+            <li id="4" onclick="mark(4)"></li>
+            <li id="5" onclick="mark(5)"></li>
+            <li id="6" onclick="mark(6)"></li>
+        </ul>
+        <ul>
+            <li id="7" onclick="mark(7)"></li>
+            <li id="8" onclick="mark(8)"></li>
+            <li id="9" onclick="mark(9)"></li>
+        </ul>
+    </div>
+
+    <div>
+        <span id="score">0</span>
+    </div>
+ </body>
+ </html>

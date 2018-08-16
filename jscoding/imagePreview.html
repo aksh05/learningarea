@@ -1,0 +1,95 @@
+<html>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            function readImage(element){
+
+                var image = element.files[0];
+                var reader = new FileReader();
+                reader.readAsDataURL(image);
+                reader.onload = function(evt){
+                    $("#preview").attr("src",evt.target.result);
+                }
+            }
+        
+            $("#imageFile").change(function(){
+                console.log("djbsdkb")
+                readImage(this);
+            });
+        })
+        
+
+        
+            angular.module('animal', [])
+                .factory('Animal',function(){
+                    return function(vocalization){
+                        return {
+                            vocalization:vocalization,
+                            vocalize : function () {
+                                console.log('vocalize: ' + this.vocalization);
+                            }
+                        }
+                    }
+                });    
+                angular.module('app', ['animal'])
+                    .factory('Dog', function (Animal) {
+                        function ngDog(){
+                            this.prop = 'my prop 1';
+                            this.myMethod = function(){
+                                console.log('test 1');
+                            }
+                        }
+                        return angular.extend(Animal('bark bark!'), new ngDog());
+                    })
+                    .factory('Cat', function (Animal) {
+                        function ngCat(){
+                            this.prop = 'my prop 2';
+                            this.myMethod = function(){
+                                console.log('test 2');
+                            }
+                        }
+                        return angular.extend(Animal('meooow'), new ngCat());
+                    })
+                .controller('MainCtrl',function($scope,Cat,Dog){
+                     $scope.cat = Cat;
+                     $scope.dog = Dog;
+                     console.log($scope.cat);
+                     console.log($scope.dog);
+                    //$scope.cat = Cat;
+                })
+
+
+                // register the service using `.provider`
+            .provider('githubService', function() {
+
+                   
+                    // default, private state
+                    var githubUrl = 'https://github.com';
+                   return{
+                        setGithubUrl: function(url) { // change default via .config if (url) { githubUrl = url }
+                            },
+                        // override me, if you want
+                        $get: function() { 
+                                self = this;
+                                this.objj= {
+                                    name:"akshay"
+                                }
+                            console.log(this);
+                            } 
+                        }
+                   
+
+            });
+    </script>
+
+
+    <body ng-app="app">
+        <div ng-controller="MainCtrl"></div>
+
+        <input type="file" id="imageFile" />
+        <img src="#" id="preview" alt="No preview available"/>
+    </body>
+</html>

@@ -1,0 +1,60 @@
+//variable
+@red : red;
+@purple: purple;
+@blue: blue;
+@even: 2n;
+@odd: 2n+1;
+@elementPos: "ll";
+//mixin
+.margin(@bottom:0px,@top:0px,@right:0px,@left:0px){
+    margin-bottom: @bottom;
+    margin-right: @right;
+    margin-left: @left;
+    margin-top: @top;
+}
+.contentSelector (@elementPos) when (@elementPos = "odd") { 
+    content: "I am odd";
+}
+.contentSelector (@elementPos) when (@elementPos = "even"){
+    content: "I am even"
+}
+//classes
+.right-trianngle{
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid purple;
+}
+
+.flexible{
+    width: 100%;
+    display: flex;
+    .margin(10px);
+}
+.flexible-div1{
+    flex-direction: row;
+}
+.flexible-div2{
+    
+    flex-direction: row-reverse;
+}
+.flexible-div3{
+    
+    flex-direction: column;
+}
+.flexible-div4{
+    
+    flex-direction: column-reverse;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+}
+.box:nth-child(2n){
+  .contentSelector("even");
+    background-color: @blue;
+}
+.box:nth-child(2n+1){
+    .contentSelector("odd");
+    background-color: @purple;
+}
